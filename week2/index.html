@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hector Rodriguez WDD 330 portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 portfolio</h1>
+    </header>
+    <main>
+
+        <h1>Notes</h1>
+
+        <h2>Programming basics</h2>
+
+        <p>We must consider the scope of a variable because this establishes in which segments of the program are accessible.
+            <br>Camel case is one of the best conventions to naming variables in Javascript. Example: myVariable. Templates literals a JavaScript expression can be inserted inside a string and the result will be displayed.
+            <br> const name = `Siri`; `Hello ${ name }!`;
+        </p>
+        <h3> Number Methods</h3>
+        <p>
+            <br> const PI = 3.1415926; PI.toFixed(3); // only one dot is needed when using constants or variables //"3.142" The value is returned as a string, rather than a number. </p>
+
+        <h3> Converting Strings to Numbers</h3>
+        <p>
+            The best way to change a string to a number is to use the Number method.
+            <br>This will convert the string form of a number into an actual number:
+            <br> Number('23'); let num = 10; num.toString(); //"10"
+        </p>
+
+        <h3> Parsing Numbers</h3>
+        <p>
+            If a string starts with a number, the parseInt function will use this number and ignore any letters:
+            <br> const address = '221B Baker Street';
+            <br> parseInt(address, 10) //221
+
+        </p>
+        <h2> Arrays</h2>
+        <h3> Removing Values from Arrays</h3>
+        <p>
+            The delete operator will remove an item from an array: 
+            <br> delete avengers[3]; //true
+            
+
+        </p>
+
+        <h3>Methods</h3>
+
+        <ul>
+            <li>To remove the last item from an array, we can use the pop() method.</li>
+            <li>The shift() method works in a similar way to the pop() method, but this removes the first item in the array.</li>
+            <li>The push() method appends a new value to the end of the array.</li>
+            <li>The unshift() method is similar to the push() method, but this appends a new item to the beginning of the array.</li>
+            <li>The concat() method can be used to merge an array with one or more arrays.</li>
+            <li>The join() method can be used to turn the array into a string that comprises all the items in the array, separated by commas.</li>
+            <li>The slice() method creates a subarray; effectively chopping out a slice of an original array, starting at one position and finishing at another.
+                <br> avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included) </li>
+            <li>The splice() method removes items from an array then inserts new items in their place. 
+                <br>For example, the following code removes the string 'Hulk' and replaces it with 'Scarlett Witch':
+            <br>avengers['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']            
+            <br>avengers.splice(3, 1, 'Scarlet Witch');</li>
+            <li>We can reverse the order of an array using the reverse() method.</li>
+            <li>We can sort the order of an array using the sort() method. Not use for numbers.</li>
+            <li>Find the index of one item.
+                <br>vengers.indexOf('Iron Man');
+            </li>
+            <li>ES6 also introduced the includes() method. This returns a boolean value depending on whether the array contains a particular element or not:
+                <br>avengers.includes('Iron Man');
+               <br> // true
+                
+                <br>avengers.includes('Thor');
+                <br>//false</li>
+        </ul>
+
+        <h3>Sets</h3>
+
+        <p>
+            A set is a data structure that represents a collection of unique values, so it cannot include any duplicate values. 
+            <br> const list = new Set();
+            <br>list.add(1);
+            <br>//If you try to add a value that is already contained in the set, then the operation is simply ignored.
+            
+            <br>const numbers = new Set([1,2,3]);
+            
+            <br>The number of values in a set can be found using the size() method.
+            
+            <br>numbers .size()
+           <br> //3
+           The has() method can be used to check if a value is in a set. This returns a boolean value of true or false
+
+            <br>numbers.has(1);
+            <br>// true
+
+            <br>numbers.has(4);
+            <br>//false
+
+            <br>Sets do not have index notation for inspecting individual entries. It cannot be iterated as an array using an index.
+            <br>The delete() method allows eliminating one specific item of the set and the clear() method removes all values.
+            
+
+        </p>
+
+        <h3>
+            Converting set to an array.
+        </h3>
+        <p>
+            const shoppingSet = new Set().add('Apples').add('Bananas').add('Beans');
+
+            <br>shoppingSet
+           <br> //Set { 'Apples', 'Bananas', 'Beans' }
+            
+           <br> A set can be converted into an array by placing the set, along with the spread operator (...) directly inside an array literal.
+            
+           <br> const shoppingArray = [...shoppingSet]
+            
+           <br> shoppingArray
+           <br> // [ 'Apples', 'Bananas', 'Beans' ]
+            
+           <br> It's also possible to use the Array.from() method to convert a set into an array.
+            
+          <br>  const shoppingArray = Array.from(shoppingSet);
+            
+
+        </p>
+        <h3>
+            Creating Maps
+        </h3>
+        <p>
+            They are a convenient way of keeping a list of key and value pairs, and are similar to 'hashes', or 'hash tables' or 'dictionaries' in other programming languages.
+
+           <br> const romanNumerals = new Map();
+            
+            <br>The set() method can be used to add a key and value pair to a map.
+            <br>romanNumerals.set(2,'II').set(3,'III').set(4,'IV').set(5,'V');
+            <br>// Map { 1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V' }
+            
+            <br>To look up a value, we can use the get() method
+           <br> romanNumerals.get(4);
+           <br> // 'IV'
+            
+           <br>The has() method can be used to check if a particular key is in a map. This returns a boolean value of true or false :
+           <br> romanNumerals.has(5);
+            
+           <br> The delete() method can be used to remove a key and value pair from a map, and the clear() method removes all key and value pairs.
+            
+           <br> const heroes = new Map([ ['Clark Kent','Superman'],
+           <br> ['Bruce Wayne', 'Batman']
+           <br> ]);
+           <br> heroes.size
+           <br> //2
+           <br> heroes.delete('Clark Kent');
+           <br> // true
+           <br> heroes.size
+           <br> // 1
+            
+
+        </p>
+        <h3>
+            Looping Over Sets
+
+        </h3>
+        <p>
+            const letters = new Set('hello');
+           <br> for(const letter of letters) {
+           <br>     console.log(letter);
+           <br> }
+            
+
+        </p>
+        <h3>
+            Looping Over Maps
+
+        </h3>
+        <p>
+            The loop will iterate over each key-value pair in the same order as they were added to the map.
+
+            <br>const romanNumerals = new Map();
+            <br>romanNumerals.set(1,'I').set(2,'II').set(3,'III').set(4,'IV').set(5,'V');
+            <br>
+            <br>romanNumerals
+            <br>Map { 1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V' }
+            <br>
+            <br>for(const key of romanNumerals.keys()) {
+            <br>    console.log(key);
+            <br>}
+            <br>1
+           <br> 2
+           <br> 3
+           <br> 4
+           <br> 5
+           <br> 
+           <br> There is also a values() method that lets us iterate over the values
+           <br> 
+           <br> for(const value of RomanNumerals.values()) {
+           <br>     console.log(value);
+           <br> }
+           <br>  I
+           <br> II
+           <br> III
+           <br> IV
+           <br> V
+           <br> 
+           <br> And to acces both:
+           <br> 
+           <br> for(const [key,value] of RomanNumerals.entries()) {
+           <br>     console.log(`${key} in Roman numerals is ${value}`);
+           <br> }
+           <br> 1 in Roman numerals is I
+           <br> 2 in Roman numerals is II
+           <br> 3 in Roman numerals is III
+           <br> 4 in Roman numerals is IV
+           <br> 5 in Roman numerals is V
+            
+
+        </p>
+
+        <h3>
+            Arrow Functions
+
+        </h3>
+        <p>
+            For short functions.
+           <br> const square = x => x*x;
+          <br>  
+           <br> For this example, we need the return at the end of the function.
+           <br> 
+           <br> const tax = (salary) => {
+           <br>     const taxable = salary - 8000;
+           <br>     const lowerRate = 0.25 * taxable;
+           <br>     taxable = taxable - 20000;
+           <br>     const higherRate = 0.4 * taxable;
+           <br>     return lowerRate + higherRate;
+           <br> }
+            
+
+        </p>
+        <h3>
+            Callback.
+
+        </h3>
+        <p>
+            Functions can also be given as a parameter to another function. A function that is passed as an argument to another is known as a callback.
+            <br>forEach()
+           <br> const colors = ['Red', 'Green', 'Blue']
+           <br> colors.forEach( (color,index) =>
+           <br>     console.log(`Color at position ${index}  is ${color}`) );
+           <br>     "Color at position 0 is Red"
+           <br>     "Color at position 1 is Green"
+           <br>     "Color at position 2 is Blue"<br>
+            
+
+        </p>
+        <h2>Questions</h2>
+        <ol>
+            <li>When we need to use a map or an array of objects? </li>
+            <li>How can we combine set, map and arrays? </li>
+      
+        </ol>
+    </main>
+    <footer>
+        <p>&copy; <a href="../index.html"> Hector Rodriguez </a>| Venezuela | <a href="https://www.byui.edu/online">BYUI
+                Online Learning</a></p>
+
+
+    </footer>
+
+</body>
+
+</html>
