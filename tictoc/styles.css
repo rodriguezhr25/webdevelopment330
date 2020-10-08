@@ -1,0 +1,25 @@
+.board{
+
+    display: grid;
+    grid-template-columns: repeat(3,10em);	
+    width: 30em;
+    height: 30em;
+   
+    margin-bottom: 20px;
+}
+.board > *{
+    border: 1px solid black;
+	border-width: 0 1px 1px 0; /*Eliminating top and left border for each div*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    
+}
+.board > *:nth-of-type(3n)  {/*Eliminate right border for each third element*/
+	border-right-width: 0;
+}
+
+.board > *:nth-of-type(n+7) {/*Eliminate border-bottom starting in 7th element*/
+	border-bottom-width: 0;
+}
