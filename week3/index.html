@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hector Rodriguez WDD 330 portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 portfolio</h1>
+    </header>
+    <main>
+
+        <h1>Notes</h1>
+
+        <h2>Object-oriented programming</h2>
+
+        <p>
+            When we write our code using objects to represent entities, that’s called object-oriented programming, in short: “OOP”.
+
+            </br>Example:
+            </br>
+            </br>let calculator = {
+            </br>sum() {
+            </br> return this.a + this.b;
+            </br>},
+            </br> mul() {
+            </br>return this.a * this.b;
+            </br>}, read() {
+            </br>this.a = +prompt('a?', 0);
+            </br> this.b = +prompt('b?', 0);
+            </br> }
+            </br>};
+            </br>calculator.read();
+            </br> alert( calculator.sum() );
+            </br> alert( calculator.mul() );
+        </p>
+
+        <h2>So, what is this?
+        </h2>
+        <p>
+            This is a keyword whose value changes depending on how a function gets called. There six different ways where this can take on new values. They are:
+            <ul>
+                <li>this in global context </li>
+                <li>this in object construction</li>
+                <li>this in an object method</li>
+                <li>this in a simple function</li>
+                <li>this in an arrow function</li>
+                <li>this in an event listener</li>
+            </ul>
+            </br> It’s common that an object method needs to access the information stored in the object to do its job.
+            </br> For instance, the code inside user.sayHi() may need the name of the user.
+            </br> To access the object, a method can use the "this" keyword. The value of this is the object “before dot”, the one used to call the method.
+            </br>
+            </br> let user = {
+            </br> name: "John",
+            </br> age: 30,
+            </br> sayHi() {
+            </br> // "this" is the "current object"
+            </br> alert(this.name);
+            </br> }
+            </br> };
+            </br> user.sayHi(); // John
+        </p>
+
+        <h2> Objects. </h2>
+        <p>An object literal is an object that is created directly in the language by wrapping all its properties and methods in curly braces {} .
+            </br>Here is an example of an object literal that describes the Man of Steel:
+            </br>
+            </br>const superman = {
+            </br> name: 'Superman',
+            </br> 'real name': 'Clark Kent',
+            </br> height: 75,
+            </br> weight: 235,
+            </br> hero: true,
+            </br> villain: false,
+            </br> allies: ['Batman','Supergirl','Superboy'],
+            </br> fly() {
+            </br> return 'Up, up and away!';
+            </br> }
+            </br>};
+            </br>
+            <b>If a property’s name doesn’t follow the rules for naming variables described in Chapter 2, it needs to be quoted. The property 'real name' in the example above needs to be quoted because it contains a space.</b>
+            </br>
+        </p>
+
+        <h3>Creating object:</h3>
+        <p>
+            </br>const name = 'Iron Man';
+            </br>const realName = 'Tony Stark';
+            </br>
+            </br>// short ES6 way
+            </br>const ironMan = { name, realName };
+            </br>// long way
+            </br>const ironMan = { name: name, realName: realName };
+        </p>
+        <h3>Accessing Properties.</h3>
+        <p>
+            </br>We can access the properties of an object using the dot notation.
+            </br>superman.name
+            </br>
+            </br>We can also access an object’s properties using bracket notation.
+            </br>superman['name']
+        </p>
+        <h3>Computed Properties</h3>
+        <p>
+            </br>const hulk = { name: 'Hulk', ['catch' + 'Phrase']: 'Hulk Smash!' };
+            </br>Result --> { name: 'Hulk', catchPhrase: 'Hulk Smash!' }
+        </p>
+        <h3>Calling Methods.</h3>
+        <p>
+            </br>We can also use dot or bracket notation.
+            </br>
+            </br>superman.fly()
+            </br> 'Up, up and away!'
+            </br>
+            </br>superman['fly']()
+            </br> 'Up, up and away!'
+        </p>
+        <h3>Finding all the Properties of an Object.</h3>
+        <p>
+            </br>We can loop through all of an object’s properties and methods by using a for in loop.
+            </br>
+            </br>for(const key in superman) {
+            </br> console.log(key + ": " + superman[key]);
+            </br>}
+            </br> "name: Superman"
+            </br> "real name: Clark Kent"
+            </br> "height: 75"
+            </br> "weight: 235"
+            </br> "hero: true"
+            </br> "villain: false"
+            </br> "allies: Batman,Supergirl,Superboy"
+            </br> "fly: function (){
+            </br> console.log(\"Up, up and away!\");
+            </br>}"
+        </p>
+        <h3>Adding and Removing Properties.</h3>
+        <p>
+            </br>Adding a new property is done by simply assigning a value to the new property.
+            </br>superman.city = 'Metropolis';
+            </br>
+            </br>Any property can be removed from an object using the delete operator.
+            </br>delete superman.fly
+        </p>
+        <h3>Objects as Parameters to Functions.</h3>
+        <p>
+            </br>An object literal can be passed as a parameter to a function
+            </br>function greet({greeting,name,age}) {
+            </br> return `${greeting}! My name is ${name} and I am ${age} years old.`;
+            </br>}
+            </br>greet({ greeting: `What's up dude`, age: 10, name: `Bart` });
+            </br>'What\'s up dude! My name is Bart and I am 10 years old.'
+            </br>We can provide default values for some of the parameters.
+            </br>function greet({greeting='Hello',name,age=18}) {
+            </br> return `${greeting}! My name is ${name} and I am ${age} years old.`;
+            </br>}
+
+        </p>
+
+
+        <h2>JSON.</h2>
+<p>
+</br>JSON is a string representation of the object literal notation.
+</br>Property names must be double-quoted
+</br>Permitted values are double-quoted strings, numbers, true, false, null, arrays and objects
+</br>Functions are not permitted values
+</br>const batman = '{"name": "Batman","real name": "Bruce Wayne","height": 74, "weight": 210, "hero": true, "villain": false, "allies": ["Robin","Batgirl","Superman"]}'
+</br>
+</br>The parse() method takes a string of data in JSON format and returns a JavaScript object:
+</br>
+</br>JSON.parse(batman);
+</br> { name: 'Batman',
+</br>'real name': 'Bruce Wayne',
+</br>height: 74,
+</br>weight: 210,
+</br>hero: true,
+</br>villain: false,
+</br>allies: [ 'Robin', 'Batgirl', 'Superman' ] }
+</br>
+</br>The stringify() method does the opposite, taking a JavaScript object and returning a string of JSON data.
+</br>
+</br>const wonderWoman = {
+</br>    name: 'Wonder Woman',
+</br>    'real name': 'Diana Prince',
+</br>    height: 72,
+</br>    weight: 165,
+</br>    hero: true,
+</br>    villain: false,
+</br>    allies: ['Wonder Girl','Donna Troy','Superman'],
+</br>    lasso: function(){
+</br>        console.log('You will tell the truth!');
+</br>    }
+</br>}
+</br>JSON.stringify(wonderWoman);
+</br>'{"name":"Wonder Woman","real name":"Diana Prince","height":72,
+</br>"weight":165,"hero":true,"villain":false,"allies":["Wonder Girl",
+</br>"Donna Troy","Superman"]}'
+</br>
+</br>We can also add a space argument that will add new lines between each key-value pair, which is useful when displaying the results in a browser:
+</br>JSON.stringify(wonderWoman, null, " ");
+</br>'{\n "name": "Wonder Woman",\n "real name": "Diana Prince",\n "height": 72,\n "weight": 165,\n "hero": true,\n "villain": false,\n "allies": [\n  "Wonder Girl",\n  "Donna Troy",\n  "Superman"\n ]\n}'
+</p>
+<h2>XRounding Methods</h2>
+<ul>
+<li>The Math.ceil() method will round a number up to the next integer, or remain the same if it is already an integer.</li>
+<li>The Math.floor() method will round a number down to the next integer, or remain the same if it is already an integer.</li>
+<li>he Math.round() method will round a number to the nearest integer.</li>
+<li>ES6 also introduced the Math.trunc() method that returns the integer-part of a number – that is, it gets truncated at the decimal point.</li>
+</ul>
+<h2>Maximum & Minimum Methods</h2>
+<p>
+The Math.max() method returns the maximum number from its arguments.
+</br>Math.min() method returns the minimum number from the given arguments.
+</p>
+<h2>Creating Regular Expressions</h2>
+<p>
+const pattern = /[a-zA-Z]+ing$/;
+</br>const pattern = new RegExp('[a-zA-Z]+ing');
+</br>
+</br>The test() method evaluates if the parameter matches the regular expression pattern.
+</br>
+</br>pattern.test('joke');
+</br>false
+</br>pattern.test('joking');
+</br>true
+</br>pattern.test('jokingly');
+</br>false
+</br>
+</br>The exec() method works in the same way as the test() method, but it returns an array containing the first match found, or null if there aren’t any matches:
+</br>
+</br>pattern.exec('joke'); 
+</br> null
+</br>
+</br>pattern.exec('joking');
+</br> [ 'joking', index: 0, input: 'joking' ]
+</br>
+</br>If a \^ character is placed at the start of the sequence of characters with the brackets, it negates the sequence, so the following regular expression represents any character that is not a capital letter:
+</br>
+</br>/[^A-Z]/
+</br>
+</br>These groups can be combined with letters to make a more complex pattern. For example, the following regular expression represents the letter J (lowercase or capital) followed by a vowel, followed by a lowercase v, followed by a vowel:
+</br>
+</br>pattern = /[Jj][aeiou]v[aeiou]/;
+</br> /[Jj][aeiou]v[aeiou]/
+</br>
+</br>pattern.test('JavaScript');
+</br> true
+</br>
+</br>pattern.test('jive');
+</br> true
+</br>
+</br>pattern.test('hello');
+</br> false
+</p>
+<h2>Regular Expression Properties</h2>
+<p>
+</br>The global property (g) makes the pattern return all matches. By default, the pattern only looks for the first occurrence of a match.
+</br>The ignoreCase (i) property makes the pattern case-insensitive. By default, they are case sensitive.
+</br>The multiline (m) property makes the pattern multiline. By default, a pattern will stop at the end of a line.
+</br>
+</br>For example, the following regular expression will match 'JavaScript' or 'javascript' because the ignoreCase property is set to true :
+</br>
+</br>pattern = /java/i
+</br> /java/i
+</br>
+</br>pattern.test('JavaScript');
+</br> true
+</p>
+<p>In a regular expression, there are a number of characters that have a special meaning, commonly known as metacharacters:</p>
+ <ul>
+ <li>. matches any character, except line breaks                                                     </li>
+ <li>\w matches any word character, and is equivalent to [A-Za-z0-9_]</li>
+ <li>\W matches any non-word character, and is equivalent to [\^A-Za-z0-9_]</li>
+ <li>\d matches any digit character, and is equivalent to [0-9]</li>
+ <li>\D matches any non-digit character, and is equivalent to [^0-9]</li>
+ <li>\s matches any whitespace character, and is equivalent to [ \t\r\n\f]</li>
+ <li>\S matches any non-whitespace character, and is equivalent to [^ \t\r\n\f]</li>
+ <li>Modifiers can be placed after a token to deal with multiple occurrences of that token:</li>
+ <li>? makes the preceding token in the regular expression optional</li>
+ <li>* matches one or more occurrences of the preceding token</li>
+ <li>+ matches one or more occurrences of the preceding token</li>
+ <li>{n} matchesnoccurrences of the preceding token</li>
+ <li>{n,} matches at leastnoccurrences of the pattern</li>
+ <li>{,m} matches at mostmoccurrences of the preceding token</li>
+ <li>{n,m} matches at leastnand at mostmoccurrences of the preceding token</li>
+ <li>^ marks the position immediately before the first character in the string</li>
+ <li>$ marks the position immediately after the last character in the string</li>
+</ul>
+<p>
+</br>pattern = /^J[aeiou]+\w+ing$/
+</br>/J[aeiou]+\w+ing/
+</br>
+</br>pattern.test('Joking');
+</br>true
+</br>
+</br>pattern.test('Jeering');
+</br>true
+</p>
+<h2>The Document Object Model</h2>
+<p>
+There are some methods from DOM Level 0 that can still be employed to access commonly used elements. These include:
+</br>Document.body returns the body element of a web page, as we saw in the previous example.
+</br>Document.images returns a node list of all the images contained in the document.
+</br>Document.links returns a node list of all the <a> elements and <area> elements that have an href attribute.
+</br>Document.anchors returns a node list of all the <a> elements that have a name attribute.
+</br>
+</br>Const h1 = document.getElementById('title');
+</br>Const listItems = document.getElementsByTagName('li');
+</br>Const listItems = document.getElementsByTagName('li');
+</p>
+<h2>Query Selectors</h2>
+
+<p>
+The document.querySelector() method allows to use CSS notation to find the first element in the document that matches a CSS selector provided as an argument.
+</br>document.querySelector('#bats');
+</br>
+</br>The document.querySelectorAll() method also uses CSS notation but returns a node list of all the elements in the document that match the CSS query selector.
+</br>document.querySelectorAll('.hero');
+</br>
+</p>
+<h2>Getting and Setting Attributes</h2>
+<p>
+The getAttribute() method returns the value of the attribute provided as an argument.
+</br>wonderWoman.getAttribute('class');
+</br>wonderWoman.setAttribute('class', 'villain');
+</br>
+</br>wonderWoman.classList.add('warrior');
+</br>wonderWoman.classList.remove('warrior');
+</p>
+<h2>Creating An Element</h2>
+<p>The document object has a createElement() method that takes a tag name as a parameter and returns that element.
+</br>
+</br>Create the element node
+</br>Create the text node
+</br>Append the text node to the element node
+</br>
+</br>const flash = document.createElement('li');
+</br>const flashText = document.createTextNode('Flash');
+</br>flash.appendChild(flashText);
+</br>
+</br>Or another solution:
+</br>
+</br>const flash = document.createElement('li');
+</br>flash.textContent = 'Flash';
+</br>
+</br>heroes.insertBefore(aquaman,wonderWoman);
+</br>
+</br>The appendChild() and insertBefore() methods can be used to move markup that already exists in the DOM as well.
+</br>
+</br>heroes.appendChild(wonderWoman);
+</br>
+</br>Remove.
+</br>
+</br>heroes.removeChild(aquaman);
+</p>
+<h2>Events.</h2>
+<p>
+The following code can be used to attach an event listener to the document that fires when the user clicks anywhere on the page:
+</br>
+</br>document.body.addEventListener("click", doSomething);
+</br>
+</br>document.onclick = function (){ console.log('You clicked on the page!'); }
+</br>
+</br>addEventListener('click', () => alert('You Clicked!'));
+</br>
+</br>function doSomething() {
+</br>alert('You Clicked!');
+</br>}
+</br>addEventListener('click',doSomething);
+</br>
+</br>onst clickParagraph = document.getElementById('click');
+</br>
+</br>clickParagraph.addEventListener('click',() => console.log('click') );
+</br>clickParagraph.addEventListener('mousedown',() => console.log('down') );
+</br>clickParagraph.addEventListener('mouseup',() => console.log('up') );
+</p>
+<h2>Keyboard Events.</h2>
+<p>
+addEventListener('keydown', (event) => {
+</br>if (event.key === 'c' && event.ctrlKey) {
+</br>        console.log('Action canceled!');
+</br>    }
+</br>});
+</br>
+</br>The following code checks to see if theShiftkey was held down when the mouse was clicked:
+</br>addEventListener('click', (event) => {
+</br>    if (event.shiftKey) {
+</br>        console.log('A Shifty Click!');
+</br>    }
+</br>});
+</p>
+
+
+        <h2>Questions</h2>
+        <ol>
+            <li>How can we use Regular expressions in functions and HTML validation? </li>
+            <li> Which is the best way to use JSON files with JS? </li>
+
+        </ol>
+    </main>
+    <footer>
+        <p>&copy; <a href="../index.html"> Hector Rodriguez </a>| Venezuela | <a href="https://www.byui.edu/online">BYUI
+                Online Learning</a></p>
+
+
+    </footer>
+
+</body>
+
+</html>
