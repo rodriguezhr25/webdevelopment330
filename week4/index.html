@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hector Rodriguez WDD 330 portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 portfolio</h1>
+    </header>
+    <main>
+
+        <h1>Notes</h1>
+
+        <h2>Forms</h2>
+
+        <p>
+
+            Forms are made up of a form element that contains form controls such as input fields, select menus, and buttons.
+
+        </p>
+        <h3>Accessing Form Elements.</h3>
+        <p>
+            The legacy DOM had a useful property called document.forms that returns an HTML collection of all the forms in the document in the order they appear in the markup.
+
+            </br>const form = document.forms[0];
+            </br>Or
+            </br>const form = document.getElementsByTagname('form')[0];
+            </br>
+            </br>Instead of using a numerical index, we can use the name attribute to identify a form:
+            </br>
+            </br>const form = document.forms.search;
+            </br>
+            </br>We can also access the form controls using their 'name' attributes as if it was a property of the form object.
+            </br>
+            </br>const input = form.searchInput
+        </p>
+        <h3>Form Properties and Methods.</h3>
+
+        <p>
+            The form.submit() method will submit the form automatically.
+            </br> The form.reset() method will reset all the form controls back to their initial values specified in the HTML.
+            </br>
+            </br> The form.action property can be used to set the action attribute of a form, so it’s sent to a different URL to be processed on the server:
+            </br>
+            </br> form.action = '/an/other.url'
+        </p>
+
+        <h3>Form Events.</h3>
+        <p>
+            const input = form.elements.searchInput;
+            </br>
+            </br> input.addEventListener('focus', () => alert('focused'), false);
+            </br> input.addEventListener('blur', () => alert('blurred'), false);
+            </br> input.addEventListener('change', () => alert('changed'), false);
+
+        </p>
+        <h3>Submitting a Form</h3>
+        <p>
+            We can use JavaScript to intercept the form before it’s sent by adding a submit event listener.
+            </br>
+            </br> const form = document.forms['search'];
+            </br> form.addEventListener ('submit', search, false);
+            </br>
+            </br> function search() {
+            </br> alert(' Form Submitted');
+            </br> }
+
+        </p>
+
+        <h3>Form Controls</h3>
+        <h4>Radio Button Input Fields</h4>
+        <p>
+            Radio buttons are created using input fields with type='radio'.
+            </br> Radio buttons have the same 'name' attribute of 'category'. This is used to group them ― only one radio button can be checked in a group that has the same name attribute
+
+        </p>
+        <h4>Select Drop-Down List</h4>
+        <p>
+            Select drop-down lists can be used to select one or more options from a list of values. The 'name' attribute of the select element is used to access it in JavaScript as a property of the form object.
+
+        </p>
+        <h4>Select Drop-Down List</h4>
+        <p>
+            Select drop-down lists can be used to select one or more options from a list of values. The 'name' attribute of the select element is used to access it in JavaScript as a property of the form object.
+            </br> It is also possible to find out the index of the option that has been selected, using the selectedIndex property.
+            </br> form.city.options[form.city.selectedIndex].text
+            </br> form.city.options[0].text
+            </br> "Choose a City"
+        </p>
+
+        <h2>OOP</h2>
+        <p>
+            Object-oriented programming (OOP for short) is a style of programming that involves separating the code into objects that have properties and methods.
+        </p>
+        <h3>Encapsulation</h3>
+        <p>
+            In OOP, this involves keeping all the programming logic inside an object and making methods available to implement the functionality, without the outside world needing to know how i t’s done.
+        </p>
+        <h3>Polymorphism</h3>
+        <p>
+            The same process can be used for different objects. In OOP, this means various objects can share the same method, but also have the ability to override shared methods with a more specific implementation.
+        </p>
+        <h3>Inheritance</h3>
+        <p>
+            Taking the features of one object then adding some new features. In OOP, this means we can take an object that already exists and inherit all its properties and methods. We can then improve on its functionality by adding new properties and methods.
+        </p>
+        <h3>Constructor Functions</h3>
+        <p>
+            This is a function that defines the properties and methods of an object. const Dice = function(sides=6){
+            </br> this.sides = sides;
+            </br> this.roll = function() {
+            </br> return Math.floor(this.sides * Math.random() + 1)
+            </br> }
+            </br> }
+            </br>
+            </br> We can now create an instance of the dice constructor function using the new operator.
+            </br>
+            </br> const redDice = new Dice();
+            </br> Dice { sides: 6, roll: [Function] }
+            </br>
+            </br> Each new object that’s created using this function will inherit the properties and methods defined in the function. This means that redDice will have a sides property and roll() method.
+
+
+        </p>
+        <h3>ES6 Class Declarations</h3>
+        <p>
+            class Dice {
+            </br> constructor(sides=6) {
+            </br> this.sides = sides;
+            </br> }
+            </br>
+            </br> roll() {
+            </br> return Math.floor(this.sides * Math.random() + 1)
+            </br> }
+            </br> }
+            <h3>Static Methods</h3>
+            <p>
+                A static method is called by the class directly rather than by instances of the class.
+                </br>
+                </br> class Dice {
+                </br> constructor(sides=6) {
+                </br> this.sides = sides;
+                </br> }
+                </br>
+                </br> roll() {
+                </br> return Math.floor(this.sides * Math.random() + 1)
+                </br> }
+                </br>
+                </br> static description() {
+                </br> return 'A way of choosing random numbers'
+                </br> }
+                </br> }
+                </br>
+                </br> Dice.description()
+                </br> 'A way of choosing random numbers'
+            </p>
+            <h3>Prototypal Inheritance</h3>
+            <p>
+                class Turtle {
+                </br> constructor(name) {
+                </br> this.name = name;
+                </br> this.weapon = 'hands';
+                </br> }
+                </br> sayHi() {
+                </br> return `Hi dude, my name is ${this.name}`;
+                </br> }
+                </br> attack(){
+                </br> return `Feel the power of my ${this.weapon}!`;
+                </br> }
+                </br> }
+                </br>
+                </br> const leo = new Turtle('Leonardo');
+                </br>
+                </br> The variable leo points to an instance of the Turtle class. It has a name property and a sayHi() method that references the name property:
+                </br>
+                </br> leo.name;
+                </br> 'Leonardo'
+                </br>
+                </br> leo.sayHi();
+                </br> 'Hi dude, my name is Leonardo'
+            </p>
+
+            <h3>The Prototype Property</h3>
+            <p>
+                Turtle.prototype;
+                </br> Turtle {}
+                </br>
+                </br> Turtle.prototype.weapon = 'Hands';
+                </br> 'Hands'
+                </br>
+                </br> We can also add a method to the prototype in a similar way:
+                </br> Turtle.prototype.attack = function(){
+                </br> return `Feel the power of my ${this.weapon}!`;
+                </br> }
+                </br>
+                </br> Now if we create a new Turtle instance, we can see that it inherits the weapon property and attack() method from the Turtle.prototype object.
+            </p>
+            <h3>Own Properties and Prototype Properties</h3>
+            <p>
+                So what’s the difference between an object's own properties and prototype properties? Prototype properties are shared by every instance of the Turtle class. This means they’ll all have a weapon property, and it will always be the same value. If we create
+                another instance of the Turtle class, we’ll see that it also inherits a weapon property that has the same value of 'Hands
+            </p>
+            <h3>Inheritance Using extends </h3>
+            <p>
+                class Turtle {
+                </br> constructor(name) {
+                </br> this.name = name;
+                </br> }
+                </br> sayHi() {
+                </br> return `Hi dude, my name is ${this.name}`;
+                </br> }
+                </br>
+                </br> swim() {
+                </br> return `${this.name} paddles in the water`;
+                </br> }
+                </br> }
+                </br>
+                </br> class NinjaTurtle extends Turtle {
+                </br> constructor(name) {
+                </br> super(name);
+                </br> this.weapon = 'hands';
+                </br> }
+                </br> attack() { return `Feel the power of my ${this.weapon}!` }
+                </br> }
+            </p>
+            <h3>Adding Methods to Built-in Objects </h3>
+            <p>
+                It is possible to add more methods to the prototype of JavaScript’s built-in objects — such as Number , String , and Array — to add more functionality.
+                </br>
+                </br> Number.prototype.isEven = function() {
+                </br> return this%2 === 0;
+                </br> }
+                </br>
+                </br> Number.prototype.isOdd = function() {
+                </br> return this%2 === 1;
+                </br> }
+            </p>
+            <h3>Getters and Setters</h3>
+            <p>
+                class Dice {
+                </br> constructor(sides=6){
+                </br> Object.defineProperty(this, 'sides', {
+                </br> get() {
+                </br> return `This dice has ${sides} sides`;
+                </br> },
+                </br> set(value) {
+                </br> if(value > 0) {
+                </br> sides = value;
+                </br> return sides;
+                </br> } else {
+                </br> throw new Error('The number of sides must be positive');
+                </br> }
+                </br> }
+                </br> });
+                </br>
+                </br> this.roll = function() {
+                </br> return Math.floor(sides * Math.random() + 1)
+                </br> }
+                </br> }
+                </br> }
+            </p>
+            <h3>Mixins</h3>
+            <p>
+                Basic mixin functionality is provided by the Object.assign() method. This will assign to the object provided as the first argument all of the properties from any objects provided as further arguments
+                </br>
+                </br> const a = {};
+                </br>
+                </br> const b = { name: 'JavaScript' };
+                </br>
+                </br> Object.assign(a,b);
+                </br> { name: 'JavaScript' }
+                </br>
+                </br> a.name
+                </br> 'JavaScript'
+            </p>
+            <h3>Using Mixins to Create a copy() Function</h3>
+
+            <p>
+                Another use of the mixin() function is to create a copy() method that can be used to make an exact, deep copy of an object:
+                </br>
+                </br> function copy(target) {
+                </br> const object = Object.create(Object.getPrototypeOf(target));
+                </br> mixin(object,target);
+                </br> return object;
+                </br> }
+                </br>
+                </br> This is a deep copy and isn’t copied by reference, so any subsequent changes to the superman or bizarro objects will not affect the other.
+            </p>
+            <h3>Factory Functions</h3>
+            <p>
+                A factory function is a function that can be used to return an object.
+                </br>
+                </br> function createSuperhuman(...mixins) {
+                </br> const object = copy(Superhuman);
+                </br> return mixin(object,...mixins);
+                </br> }
+
+            </p>
+            <h3>Use Arrow Functions</h3>
+            <p>
+                Arrow functions were introduced in ES6, and one of the advantages of using them is that they don't have their own this context, so this remains bound to the original object making the function call:
+                </br>
+                </br> superman.findFriends = function() {
+                </br> this.friends.forEach((friend) => {
+                </br> console.log(`${friend.name} is friends with ${this.name}`);
+                </br> }
+                </br> );
+                </br> }
+
+            </p>
+            <h2>Questions</h2>
+            <ol>
+                <li>How can we appy OOP to existing projecs that use regular functions? </li>
+     
+
+            </ol>
+    </main>
+    <footer>
+        <p>&copy; <a href="../index.html"> Hector Rodriguez </a>| Venezuela | <a href="https://www.byui.edu/online">BYUI
+                Online Learning</a></p>
+
+
+    </footer>
+
+</body>
+
+</html>
