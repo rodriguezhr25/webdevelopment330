@@ -1,11 +1,23 @@
 import ls from './ls.js';
 
-function removeElement(elementId) {
-    // Removes an element from the document
-    var element = document.getElementById(elementId);
-    element.parentNode.removeChild(element);
+function activeFilter(todos) {
+    return  todos.filter(todo =>{
+        //Return all false
+         return !todo.completed
+
+    })
+     
+}
+function completedFilter(todos) {
+    return  todos.filter(todo =>{
+        //Return all true
+         return todo.completed
+
+    })
+     
 }
 
 export default{
-    removeElement
+    activeFilter,
+    completedFilter
 }

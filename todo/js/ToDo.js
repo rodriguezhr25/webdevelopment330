@@ -2,11 +2,15 @@ import utils from './utils.js';
 import ls from './ls.js';
 
 document.querySelector("#addBtn").onclick  = newTodo;
+document.querySelector("#allFilter").onclick = applyFilter;
+document.querySelector("#activeFilter").onclick = applyFilter;
+document.querySelector("#completedFilter").onclick = applyFilter;
+loadTodos();
 function loadTodos(){
     const todoList = ls.getTodoList(); /// get the elements in the JSON file
 
-    todoList.forEach(element => {
-        const el = createTodoElement(element); //Create element
+    todoList.forEach(todo => {
+        const el = createTodoElement(todo); //Create element
         addToList(el); //Add to list of elements
     });
 
@@ -79,6 +83,28 @@ function updateTodo(e){
 function addToList(todoDiv){
     //Add the new element to the todo list
     document.querySelector('#todos').appendChild(todoDiv);
+}
+
+function applyFilter(e){
+    //Clear the list
+    document.querySelector('#todos').innerHTML = ''; //Empty list
+    //Variables, obtain elements in localstorage
+    let filteredTodos = [];
+    const allTodos = ls.getTodoList();
+
+    if(e.currentTarget.id == 'activeFilter'){
+        filteredTodos = utils.activeFilter(allTodos);
+    }else if(e.currentTarget.id == 'completedFilter'){
+        filteredTodos = utils.completedFilter(allTodos);
+    }else if(e.currentTarget.id == 'allFilter'){
+        filteredTodos = allTodos;
+    }
+
+    filteredTodos.forEach(todo =>{
+        const el = createTodoElement(todo); //Create element
+        addToList(el); //Add to list of elements
+
+    })
 }
 
 

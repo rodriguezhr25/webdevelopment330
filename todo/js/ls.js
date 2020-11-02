@@ -15,11 +15,7 @@ function updateTodo(id){
     let result = false;
     const updatedTodos = toDoList.map(todo => {
         if(todo.id == id){
-            if(todo.completed){
-            todo.completed = false;
-            }else{
-            todo.completed = true;
-            }
+            todo.completed = todo.completed ? false: true;
             result = todo.completed;
         }
         return todo;
