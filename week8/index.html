@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hector Rodriguez WDD 330 portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 portfolio</h1>
+    </header>
+    <main>
+
+        <h1>Notes</h1>
+
+        <h2>Transforms</h2>
+        <p>The CSS3 transform property allows us to translate, rotate, scale, and/or skew any element on the page. We can manipulate an element’s appearance using transform functions. The value of the transform property is one or more transform functions
+            (separated by spaces).
+        </p>
+        <h3>Translation</h3>
+        <p>
+            Translation functions allow us to move elements left, right, up, or down.
+            </br>
+            </br> The translate(x,y) function moves an element x from the left, and y from the top:
+            </br>
+            </br> transform: translate(45px, -45px);
+            </br>
+            </br> To move an element vertically or horizontally, wecan use the translatex or translatey functions respectively.
+            </br>
+            </br> transform: translateX(45px);
+            </br> or
+            </br> transform: translateY(-30px);
+            </br>
+            </br> Transforms don’t work on inline elements. We must add display: inline-block.
+        </p>
+        <h3>Scaling</h3>
+        <p>
+            The scale(x,y) function scales an element by the defined factors horizontally then vertically.
+            </br>
+            </br> transform: scale(1.5, 0.25);
+            </br>
+            </br> We can also use the scaleX(x) or scaleY(y) functions
+            </br>
+            </br> .ad-ad2 h1:hover span {
+            </br> color: #484848;
+            </br> transform: translateX(40px) scale(1.5);
+            </br> }
+        </p>
+        <h3>Rotation</h3>
+        <p>
+            The rotate() function rotates an element around the point of origin by a specified angle value. As with scale , by default the point of origin is the element’s center.
+            </br>
+            </br> .ad-ad2 h1:hover span {
+            </br> color: #484848;
+            </br> transform: rotate(10deg) translateX(40px) scale(1.5);
+            </br> }
+        </p>
+        <h3>Skew</h3>
+        <p>
+            The skew(x,y) function specifies a skew along the x and y axes.
+            </br>
+            </br> transform: skew(15deg, 4deg);
+        </p>
+        <h4>
+            <p>The order of transform functions does matter: if you rotate before translating, your translate direction will be on the rotated axis. </p>
+        </h4>
+        <h3>Transitions</h3>
+        <p>
+            Here are the steps to create a simple transition using only CSS:
+            </br>
+            </br> Declare the original state of the element in the default style declaration.
+            </br> Declare the final state of your transitioned element; for example, a :hover state.
+            </br> Include the transition functions in your default style declaration using the transition properties, including: transition-property , transition-duration , transition-timing-function , and transition-delay . We’ll look at each of these
+            and how they work shortly.
+            </br>
+            </br> The transition-property property defines the CSS properties of the element that should be transitioned, with all for all properties being the default.
+        </p>
+        <h3>The transition-duration Property</h3>
+        <p>
+            The transition-duration property sets how long the transition will take: the duration of time it takes to go from the default state to the transitioned state.
+            </br>
+            </br> transition-duration: 0.2s;
+        </p>
+
+        <h3>The transition-timing-function Property</h3>
+        <p>
+            The transition-timing-function lets you control the pace of the transition in even more granular detail.
+            </br>
+            </br> The most common timing functions include the key terms ease , linear , ease-in , ease-out , or ease-in-out . The default ease has a slow start, then it speeds up, and ends slowly. ease-in-out is similar to ease , but accelerates more sharply
+            at the beginning. linear creates a transition that animates at a constant speed. ease-in creates a transition that is slow to start but gains speed, then stops abruptly. The opposite, ease-out , starts at full speed, then slows progressively
+            as it reaches the conclusion of the transition.
+            </br>
+            </br> transition-timing-function: ease-out;
+            </br>
+            </br> The transition-delay-function Property
+            </br>
+            </br> Finally, by using the transition-delay property, it’s possible to introduce a delay before the transition begins.
+        </p>
+        <h3>The transition Shorthand Property</h3>
+        <p>
+            .ad-ad2 h1 span {
+            </br> transition-property: transform;
+            </br> transition-duration: 0.2s;
+            </br> transition-timing-function: ease-out;
+            </br> transition-delay: 50ms;
+            </br> }
+            </br> Now let’s combine all those values into a shorthand declaration:
+            </br>
+            </br> .ad-ad2 h1 span {
+            </br> transition: transform 0.2s ease-out 50ms;
+            </br> }
+            </br>
+            </br> Note that the properties in the shorthand syntax can be in any order, however, if a delay is included, we must also include a duration, and the duration must precede the delay.
+            </br>
+            </br> transition-property: transform, color;
+            </br> transition-duration: 0.2s, 0.1s;
+            </br> transition-timing-function: ease-out, linear;
+            </br> transition-delay: 50ms;
+            </br>
+            </br> These properties will apply an ease-out transition over 0.2 seconds to the transform , but a linear transition over 0.1 seconds to the color . Both have a delay of 50ms before transition initiation.
+        </p>
+        <h3>
+            Keyframes
+        </h3>
+        <p>
+            To animate an element in CSS:
+            </br> First create a named animation, then attach it to an element in that element’s property declaration block.
+            </br>
+            </br> For an animation called myAnimation , the @keyframes rule would look like this:
+            </br>
+            </br> @-webkit-keyframes myAnimation {
+            </br> /* put animation keyframes here */
+            </br> }
+            </br> @keyframes myAnimation {
+            </br> /* put animation keyframes here */
+            </br> }
+            </br>
+            </br> @keyframes moveRight {
+            </br> from {
+            </br> transform: translateX(-50%);
+            </br> }
+            </br> to {
+            </br> transform: translateX(50%);
+            </br> }
+            </br> }
+            </br>
+            </br> @keyframes appearDisappear {
+            </br> 0%, 100% {
+            </br> opacity: 0;
+            </br> }
+            </br> 20%, 80% {
+            </br> opacity: 1;
+            </br> }
+            </br> }
+            </br>
+            </br> @keyframes bgMove {
+            </br> 100% {
+            </br> background-position: 120% 0;
+            </br> }
+            </br> }
+
+        </p>
+        <h2>Canvas.</h2>
+        <p>With HTML5’s Canvas API, we can draw anything we can imagine, all through JavaScript. This can improve the performance of our websites by avoiding the need to download images off the network.</p>
+
+        <h3>Why not set width and height using CSS?</h3>
+        <p>
+            It’s because the width and height attributes determine how large the canvas’s coordinate system is. If we don’t specify width and height , the canvas element will default to a width of 300 and a height of 150. If we set the width and height for a canvas
+            only in CSS, the canvas element will be 300 by 150, and the CSS properties will simply determine how large the box is that displays the image.
+
+            <canvas id="myCanvas" class="myCanvas" width="200" height="200">
+            Sorry! Your browser doesn’t support Canvas.
+        </canvas>
+
+
+            </br> var canvas = document.getElementById("myCanvas");
+            </br> var context = canvas.getContext("2d");
+            </br> context.strokeStyle = "red";
+            </br>
+            </br> To draw a rectangle with a red border and blue fill, we must also define the fill color:
+            </br>
+            </br> var canvas = document.getElementById("myCanvas");
+            </br> var context = canvas.getContext("2d");
+            </br> context.strokeStyle = "red";
+            </br> context.fillStyle = "blue";
+        </p>
+        <h3>Drawing a Rectangle to the Canvas</h3>
+        <p>
+            We can do this by calling the fillRect and strokeRect methods. Both of these methods take the X and Y coordinates where you want to begin drawing the fill or the stroke, and the width and height of the rectangle.
+            </br>
+            </br> var canvas = document.getElementById("myCanvas");
+            </br> var context = canvas.getContext("2d");
+            </br> context.strokeStyle = "red";
+            </br> context.fillStyle = "rgba(0, 0, 255, 0.5)";
+            </br> context.fillRect(10, 10, 100, 100);
+            </br> context.strokeRect(10, 10, 100, 100);
+
+        </p>
+        <h3>The Canvas Coordinate System</h3>
+        <p>In the canvas coordinate system, the top-left corner is (0,0). If the canvas is 200 pixels by 200 pixels, then the bottom-right corner is (200,200).</p>
+
+        <h3>Draw a circle.</h3>
+        <p>
+            function drawCircle(canvas) {
+            </br> var canvas = document.getElementById("myCanvas");
+            </br> var context = canvas.getContext("2d");
+            </br> context.beginPath();
+            </br> context.arc(50, 50, 30, 0, Math.PI*2, true);
+            </br> }
+        </p>
+        <h3>Saving Canvas Drawing</h3>
+        <p>
+
+            If we create an image programmatically using the Canvas API, but decide we’d like to have a local copy of our drawing, we can use the API’s toDataURL method to save our drawing.
+            </br>
+            </br> When the button is clicked, we want to open the canvas drawing as an image in a new tab. To do that, we’ll define a new JavaScript function called saveDrawing :
+            </br>
+            </br> function saveDrawing() {
+            </br> var canvas5 = document.getElementById("demo5");
+            </br> window.open(canvas5.toDataURL("image/png"));
+            </br> }
+
+        </p>
+
+        <h2>SVG</h2>
+        <p>
+            SVG stands for Scalable Vector Graphics, a specific file format that allows you to describe vector graphics using XML. A major selling point of vector graphics in general is that, unlike bitmap images (such as GIF, JPEG, PNG, and TIFF), vector images
+            preserve their quality even as you blow them up or shrink them down.
+        </p>
+        <h3>Drawing in SVG</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <circle cx="50" cy="50" r="25" fill="red"/>
+</svg>
+        <p>
+            The viewBox attribute defines the starting location, width, and height of the SVG image.
+            </br>
+            </br>The circle element defines a circle, with cx and cy the X and Y coordinates of the center of the circle.
+            </br>
+            </br>The radius is represented by r , while fill defines the fill style.
+        </p>
+        <h3>A rectangle.</h3>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400">
+    <desc>Drawing a rectangle</desc>
+        <rect x="10" y="10" width="100" height="100"  
+            fill="blue" stroke="red" stroke-width="3"  />  
+    
+</svg>
+
+        <p>
+            To save ourselves some work (and sanity), instead of creating SVG images by hand, we can use an image editor to help. One open source tool that you can use to make SVG images is Inkscape, which is available for download at http://inkscape.org/.
+        </p>
+    </main>
+    <footer>
+        <p>&copy; <a href="../index.html"> Hector Rodriguez </a>| Venezuela | <a href="https://www.byui.edu/online">BYUI
+                Online Learning</a></p>
+
+
+    </footer>
+
+</body>
+
+</html>

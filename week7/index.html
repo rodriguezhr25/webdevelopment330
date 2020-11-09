@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hector Rodriguez WDD 330 portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 portfolio</h1>
+    </header>
+    <main>
+
+        <h1>Notes</h1>
+
+        <h2>Further Functions and Ajax</h2>
+        <h3>Call and Apply Methods</h3>
+        <p>
+            The call() method can be used to set the value of this inside a function to an object that is provided as the first argument.
+            </br>
+            </br> function sayHello(){
+            </br> return `Hello, my name is ${ this.name }`;
+            </br> }
+            </br>
+            </br> We can create some objects that have a name property, then use the call() method to invoke the sayHello() function, providing each object as an argument. This will then take the value of this in the function:
+            </br>
+            </br>
+            </br> function sayHello(greeting='Hello'){
+            </br> return `${ greeting }, my name is ${ this.name }`;
+            </br> }
+            </br>
+            </br> sayHello.call(clark, 'How do you do');
+            </br> 'How do you do, my name is Clark'
+            </br>
+            </br> sayHello.call(bruce);
+            </br> 'Hello, my name is Bruce'
+        </p>
+        <h3>Memoization</h3>
+        <p>
+            If a function takes some time to compute a return value, we can save the result in a cache property. Then if the same argument is used again later, we can return the value from the cache, rather than having to compute the result again.
+            </br>
+            </br> function square(x){
+            </br> square.cache = square.cache || {};
+            </br> if (!square.cache[x]) {
+            </br> square.cache[x] = x*x;
+            </br> }
+            </br> return square.cache[x]
+            </br> }
+        </p>
+        </p>
+        <h3>Recursive Functions</h3>
+
+        <p>
+            A recursive function is one that invokes itself until a certain condition is met. It’s a useful tool to use when iterative processes are involved. A common example is a function that calculates the factorial of a number:
+            </br>
+            </br> function factorial(n) {
+            </br> if (n === 0) {
+            </br> return 1;
+            </br> } else {
+            </br> return n * factorial(n - 1);
+            </br> }
+            </br> }
+
+        </p>
+        <h3>Event-driven Asynchronous Programming</h3>
+        <p>
+            Instead of waiting for an event to occur, a callback can be created that’s invoked when the event happens. This means that the code is able to run out of order, or asynchronously.
+            </br>
+            </br> Here’s an example of a function called wait() that accepts a callback. To simulate an operation that takes some time to happen, we can use the setTimeout() function to call the callback after a given number of seconds:
+            </br>
+            </br> function wait(message, callback, seconds){
+            </br> setTimeout(callback,seconds * 1000);
+            </br> console.log(message);
+            </br> }
+            </br> function selfDestruct(){
+            </br> console.log('BOOOOM!');
+            </br> }
+            </br>
+            </br> This is how it prints the results.
+            </br>
+            </br> wait('This tape will self-destruct in five seconds ... ', selfDestruct, 5);
+            </br> console.log('Hmmm, should I accept this mission or not ... ?');
+            </br>
+            </br> 'This tape will self-destruct in five seconds ... '
+            </br> 'Hmmm, should I accept this mission or not ... ? '
+            </br> 'BOOOOM!'
+            </br>
+            </br> The code runs until the end of the function while is waiting for the callback, and when this is done it returns the value.
+        </p>
+        <h3>Promises</h3>
+        <p>
+            A promise represents the future result of an asynchronous operation. Promises don't do anything that can't already be achieved using callbacks, but they help simplify the process, and avoid the convoluted code that can result from using multiple callbacks.
+        </p>
+        <h3>Creating A Promise</h3>
+        <p>
+            A promise is created using a constructor function. This takes a function called an executor as an argument. The executor initializes the promise and starts the asynchronous operation. It also accepts two functions as arguments: the resolve() function
+            is called if the operation is successful, and the reject() function is called if the operation fails. The general layout of a promise can be seen in the code below:
+            </br>
+            </br> const promise = new Promise( (resolve, reject) => {
+            </br> // initialization code goes here
+            </br> if (success) {
+            </br> resolve(value);
+            </br> } else {
+            </br> reject(error);
+            </br> }
+            </br> });
+        </p>
+        <h3>Async Functions</h3>
+        <p>
+            Async functions were added to the ES2017 specification. These functions are preceded by the async keyword and allow you to write asynchronous code as if it was synchronous. This is achieved by using the await operator before an asynchronous function.
+            This will wrap the return value of the function in a promise that can then be assigned to a variable. The next line of code is not executed until the promise is resolved.
+            </br>
+            </br> async function loadGame(userName) {
+            </br>
+            </br> try {
+            </br> const user = await login(userName);
+            </br> const info = await getPlayerInfo (user.id);
+            </br> // load the game using the returned info
+            </br> }
+            </br>
+            </br> catch (error){
+            </br> throw error;
+            </br> }
+            </br> }
+        </p>
+
+        <h3>Generalized Functions</h3>
+        <p>
+            Callbacks can be used to build more generalized functions. Instead of having lots of specific functions, one function can be written that accepts a callback.
+            </br>
+            </br> function random(a,b,callback) {
+            </br> if (b === undefined) b = a, a = 1; // if only one argument is supplied, assume the lower limit is 1
+            </br> const result = Math.floor((b-a+1) * Math.random()) + a
+            </br> if(callback) {
+            </br> result = callback(result);
+            </br> }
+            </br> return result;
+            </br> }
+            </br>
+            </br> Now we have a function where more flexibility can be added using a callback. For example, we can use the square() function from earlier in the chapter to produce a random square number from one to 100:
+            </br>
+            </br> function square(n) {
+            </br> return n*n;
+            </br> }
+            </br>
+            </br> random(1,10,square);
+        </p>
+        <h2>Ajax</h2>
+        <p>
+            Ajax is a technique that allows web pages to communicate asynchronously with a server, and it dynamically updates web pages without reloading. This enables data to be sent and received in the background, as well as portions of a page to be updated in
+            response to user events, while the rest of the program continues to run.
+            </br>
+            </br> Asynchronous JavaScript and XML:
+            </br>
+            </br> Asynchronous
+            </br>
+            </br> When a request for data is sent, the program doesn’t have to stop and wait for the response. It can carry on running, waiting for an event to fire when a response is received. By using callbacks to manage this, programs are able to run in
+            an efficient way, avoiding lag as data is transferred back and forth.
+            </br>
+            </br> JavaScript
+            </br>
+            </br> JavaScript was always considered a 'front-end' language, not used to communicate with the server. Ajax enabled JavaScript to send requests and receive responses from a server, allowing content to be updated in real time.
+            </br>
+            </br> XML
+            </br>
+            </br> When the term Ajax was originally coined, XML documents were often used to return data. Many different types of data can be sent, but by far the most commonly used in Ajax nowadays is JSON, which is more lightweight and easier to parse than
+            XML. (Although it has never really taken off, the termAjaj is sometimes used to describe the technique.) JSON also has the advantage of being natively supported in JavaScript, so you can deal with JavaScript objects rather than having to parse
+            XML files using DOM methods.
+        </p>
+
+        <h3> The Fetch API</h3>
+        <p>
+            It has since been superseded by theFetch API, which is currently a living standard for requesting and sending data asynchronously across a network. The Fetch API uses promises to avoid callback hell, and also streamlines a number of concepts that had
+            become cumbersome when using the XMLHttpRequest object.
+            </br>
+            </br> fetch('https://example.com/data')
+            </br> .then( // code that handles the response )
+            </br> .catch( // code that runs if the server returns an error )
+        </p>
+
+        <h3>Response Interface</h3>
+        <p>
+            const url = 'https:example.com/data';
+            </br>
+            </br> fetch(url)
+            </br> .then((response) => {
+            </br> if(response.ok) {
+            </br> return response;
+            </br> }
+            </br> throw Error(response.statusText);
+            </br> })
+            </br> .then( response => // do something with response )
+            </br> .catch( error => console.log('There was an error!') )
+
+        </p>
+
+        <p>Some other properties of the Response object are:</p>
+        <ul>
+            <li> headers – A Headers object (see later section) containing any headers associated with the response </li>
+            <li> url – A string containing the URL of response</li>
+            <li> redirected – A boolean value that specifies if the response is the result of a redirect</li>
+            <li> type – A string value of 'basic', 'cors', 'error' or 'opaque'. A value of 'basic' is used for a response from the same domain. A value of 'cors' means the data was received from a valid cross-origin request from a different domain. A value
+                of 'opaque' is used for a response received from 'no-cors' request from another domain, which means access to the data will be severely restricted. A value of 'error' is used when a network error occurs. </li>
+            <li> The response object also contains a number of methods that return promises that can then be chained together.</li>
+        </ul>
+
+        <h3>Redirects</h3>
+        <p>
+            The redirect() method can be used to redirect to another URL.
+            </br>
+            </br> fetch(url)
+            </br> .then( response => response.redirect(newURL)); // redirects to another URL
+            </br> .then( // do something else )
+            </br> .catch( error => console.log('There was an error: ', error))
+        </p>
+        <h3>File Responses</h3>
+        <p>
+            The blob() method is used to read a file of raw data, such as an image or a spreadsheet.
+            </br> fetch(url)
+            </br> .then( response => response.blob() ); // transforms the data into a blob object
+            </br> .then( blob => console.log(blob.type) )
+            </br> .catch( error => console.log('There was an error: ', error))
+        </p>
+        <h3>JSON Response</h3>
+        <p>
+            JSON is probably the most common format for AJAX responses. The json() method is used to deal with these by transforming a stream of JSON data into a promise that resolves to a JavaScript object. fetch(url) .then( response => response.json() ); // transforms
+            the JSON data into a JavaScript object .then( data => console.log(Object.entries(data)) ) .catch( error => console.log('There was an error: ', error))
+        </p>
+        <h3>FormData</h3>
+        <p>
+            The Fetch API includes the FormData interface, which makes it much easier to submit information in forms using Ajax.
+            </br>
+            </br> const form = document.forms['todo'];
+            </br>
+            </br> form.addEventListener('submit', addTask, false);
+            </br>
+            </br> function addTask(event) {
+            </br> event.preventDefault();
+            </br> const task = new FormData(form);
+            </br> const url = `http://echo.jsontest.com/id/1/title/${form.task.value}`;
+            </br> const headers = new Headers({
+            </br> 'Accept': 'application/json',
+            </br> 'Content-Type': 'application/json'
+            </br> });
+            </br> const request = new Request(url,
+            </br> {
+            </br> method: 'POST',
+            </br> mode: 'cors',
+            </br> header: headers,
+            </br> body: JSON.stringify(task)
+            </br> }
+            </br> )
+            </br>
+            </br> fetch(request)
+            </br> .then( response => response.json() )
+            </br> .then( data => console.log(`${data.title} saved with an id of ${data.id}`) )
+            </br> .catch( error => console.log('There was an error:', error))
+            </br>
+            </br> }
+        </p>
+        <h2>Questions</h2>
+        <ol>
+            <li>How can we determine if a function will must be configure as async?</li>
+            <li> Search some applications for blob() responses </li>
+
+        </ol>
+    </main>
+    <footer>
+        <p>&copy; <a href="../index.html"> Hector Rodriguez </a>| Venezuela | <a href="https://www.byui.edu/online">BYUI
+                Online Learning</a></p>
+
+
+    </footer>
+
+</body>
+
+</html>
