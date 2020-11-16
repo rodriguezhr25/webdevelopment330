@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hector Rodriguez WDD 330 portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 portfolio</h1>
+    </header>
+    <main>
+
+        <h1>Notes</h1>
+
+        <h2>The Window Object</h2>
+        <p>The window.alert() method will pause the execution of the program and display a message in a dialog box. The message is provided as an argument to the method, and undefined is always returned.</p>
+        <p>The window.confirm() method will stop the execution of the program and display a confirmation dialog that shows the message provided as an argument, and giving the options of OK or Cancel. It returns the boolean values of true if the user clicks
+            OK, and false if the user clicks Cancel:
+        </p>
+        <p>window.confirm('Do you wish to continue?');</p>
+        <p>The window.prompt() method will stop the execution of the program. It displays a dialog that shows a message provided as an argument, as well as an input field that allows the user to enter text. This text is then returned as a string when the
+            user clicks OK. If the user clicks Cancel, null is returned:</p>
+        <p>window.prompt('Please enter your name:');</p>
+        <p>The window.location property is an object that contains information about the URL of the current page. It contains a number of properties that provide information about different fragments of the URL.</p>
+        <p>window.location.href "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja".
+        </p>
+        <p>The protocol property returns a string describing the protocol used (such as http , https , pop2 , ftp etc.).</p>
+        <p>window.location.protocol "https:"
+        </p>
+        <p>The host property returns a string describing the domain of the current URLandthe port number (this is often omitted if the default port 80 is used):</p>
+        <p>window.location.host "www.sitepoint.com"
+        </p>
+        <p>The hostname property returns a string describing the domain of the current URL:
+        </p>
+        <p>window.location.hostname "www.sitepoint.com"
+        </p>
+        <p>The pathname property returns a string of the path that follows the domain:</p>
+        <p>window.location.pathname "/premium/books/javascript-novice-to-ninja"
+        </p>
+
+        <ul>
+            <li>The reload() method can be used to force a reload of the current page. If it’s given a parameter of true , it will force the browser to reload the page from the server, instead of using a cached page.</li>
+            <li>The assign() method can be used to load another resource from a URL provided as a parameter, for example.</li>
+            <li>The window.history property can be used to access information about any previously visited pages in the current browser session.</li>
+            <li>The window.history.length property shows how many pages have been visited before arriving at the current page.</li>
+            <li>The window.history.go() method can be used to go to a specific page, where 0 is the current page: window.history.go(1); // goes forward 1 page window.history.go(0); // reloads the current page window.history.go(-1); // goes back 1 page</li>
+        </ul>
+        <h3>Controlling Windows</h3>
+        <p>A new window can be opened using the window.open() method.
+
+            </br> const popup = window.open('https://sitepoint.com','
+            </br> SitePoint','width=400,height=400,resizable=yes');
+            </br>
+            </br> The close() method can be used to close a window.
+            </br>
+            </br> popup.close();</p>
+
+        <h2>HTML5 APIs</h2>
+
+        <p>
+            Examples could be:
+            </br>
+            </br>data-powers = 'flight superSpeed'
+            </br>data-rating = '5'
+            </br>data-dropdown
+            </br>data-user = 'DAZ'
+            </br>data-max-length = '32'
+            </br>
+            </br>For example, all the elements with an attribute of data-dropdown could be identified as dropdown menu.
+        </p>
+
+        <h3>HTML5 Web Storage</h3>
+        <p>The Web Storage API provides a key-value store on the client’s computer that is similar to using cookies but has fewer restrictions, more storage capacity, and is generally easier to use. Here is a basic example of storing information. To save
+            a value locally, use:
+
+            </br> localStorage.setItem('name', 'Walter White');
+            </br> localStorage.getItem('name');
+            </br>
+            </br> localStorage.name = 'Heisenberg';
+            </br> console.log(localStorage.name);
+            </br>
+            </br> To remove an entry from local storage, use the removeItem method:
+            </br>
+            </br> localStorage.removeItem('name');
+            </br> delete localStorage.name;
+            </br>
+            </br> To completely remove everything stored in local storage, use the clear() method:
+            </br>
+            </br> localStorage.clear();
+            </br>
+            </br> Every time a value is saved to local storage, a storage event is fired.
+            </br>
+            </br> addEventListener('storage', (event) => {
+            </br> console.log(`The ${event.key} was updated from ${event.oldValue} to ${event.newValue} and saved in
+            </br> ${event.storageArea}`) }, false);
+            </br>
+            </br> Using JSON, we can store any JavaScript object in local storage
+            </br>
+            </br> localStorage.setItem('superman', JSON.stringify(hero);
+            </br>
+            </br> To retrieve the superhero as a JavaScript object:
+            </br>
+            </br> superman = JSON.parse(localStorage.getItem('superman'));
+
+
+
+        </p>
+
+        <h3>Geolocation</h3>
+        <p>
+            If geolocation is available, it will be a property of the navigator object that we met in Chapter 9. This property has a method called getCurrentPosition() that will return a position object to a specified callback function, called youAreHere() in the
+            example:
+            </br>
+            </br> navigator.geolocation.getCurrentPosition(youAreHere);
+            </br>
+            </br> function youAreHere(position) {
+            </br> console.log(`Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`);
+            </br> }
+            </br>
+            </br> The position object has several other properties that can be used to find out information about the location and movement of the device:
+        </p>
+        <ul>
+            <li> position.speed property returns the ground speed of the device in meters per second.</li>
+            <li>position.altitude property returns an estimate of the device’s altitude in meters above the WGS84 ellipsoid, which is a standard measurement for the center of the Earth.</li>
+            <li>position.heading property returns the direction the device is moving in. This is measured as a bearing in degrees, clockwise from North.</li>
+            <li>position.timestamp property returns the time that the position information was recorded.</li>
+            <li>position.accuracy property returns the accuracy of the latitude and longitude properties in meters. </li>
+            <li>The lower the returned value, the more accurate the measurements are, as is the case for the position.altitudeAccuracy property, which returns the accuracy of the altitude property in meters.</li>
+            <li>In addition, the geolocation object has a watchPosition() method that will call a callback function every time the position of the device is updated.</li>
+        </ul>
+        <p>
+
+            const id = navigator.geolocation.watchPosition(youAreHere);
+            </br> The clearWatch() method can be used to stop the callback.
+            </br> navigator.geolocation.clearWatch(id);
+
+        </p>
+
+        <h3>
+            Notifications.
+        </h3>
+        <p>
+            The Notification API allows you to show messages using the system's notifications. Before you can send notifications, you need to get permission granted by the user. This can be achieved using the requestPermission() method of a Notification global object.
+
+            </br> if(window.Notification) {
+            </br> Notification.requestPermission();
+            </br> }
+
+
+            </br> if(window.Notification) {
+            </br> Notification.requestPermission()
+            </br> .then((permission) => {
+            </br> if(Notification.permission === 'granted') {
+            </br> new Notification('Hello JavaScript!');
+            </br> }
+            </br> });
+            </br> }
+        </p>
+    </main>
+    <footer>
+        <p>&copy; <a href="../index.html"> Hector Rodriguez </a>| Venezuela | <a href="https://www.byui.edu/online">BYUI
+                Online Learning</a></p>
+
+
+    </footer>
+
+</body>
+
+</html>
