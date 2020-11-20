@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Local Quakes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/index.js"></script>
+
+</head>
+
+<body>
+    <main>
+        <form id="quakeForm">
+        <div id= "divGrid">
+            <div>
+                <label>Start Date</label>
+                <input id="startDate" type="date" required>
+            </div>
+            <div>
+                <label>End Date</label>
+                <input id="endDate" type="date" required>
+            </div>
+           
+            <div>
+                <label>Radius</label>
+                <input id="maxRadius" type="number" min=100 max= 20000 step = 50>
+               
+            </div>
+      
+            <button class="btn" id="searchBtn" > Search</button>
+        </div>
+    </form>
+        <h1>Quake List</h1>
+        <ul id="quakeList"></ul>
+    </main>
+</body>
+
+</html>
