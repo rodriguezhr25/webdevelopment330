@@ -41,6 +41,10 @@ const links = [
       label: "Quakes Near Me",
       url: "QuakesNearMe/index.html"
     },
+    {
+      label: "Week10 notes",
+      url: "week10/index.html"
+    },
   ]
 
   function generateMenu(){
