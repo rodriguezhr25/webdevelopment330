@@ -49,10 +49,10 @@ export default class WeatherView {
             max.setAttribute("class", "details");
             pre.setAttribute("class", "details");
             hum.setAttribute("class", "details");
-            min.textContent = `Min:${minTemp} °C `;
-            max.textContent = `Max:${maxTemp} °C `;
-            pre.textContent = `Pressure:${pressure}hPA `;
-            hum.textContent = `Humidity:${humidity}% `;
+            min.textContent = `Min: ${minTemp} °C `;
+            max.textContent = `Max: ${maxTemp} °C `;
+            pre.textContent = `Pressure: ${pressure}hPA `;
+            hum.textContent = `Humidity: ${humidity}% `;
             details.appendChild(min);
             details.appendChild(max);
             details.appendChild(pre);
