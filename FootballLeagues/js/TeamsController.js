@@ -55,7 +55,8 @@ export default class TeamsController {
     const btn = document.querySelector(`.btn[data-id="${teamId}"]`);
 
     btn.addEventListener('click', e => {
-
+      let player = document.getElementsByClassName('title'); 
+      player[0].textContent = "";
       this.getTeamsByLeague();
     });
   }
