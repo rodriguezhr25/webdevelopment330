@@ -37,7 +37,7 @@ const links = [
     },
     {
       label: "Weather App",
-      url: "weatherApp/index.html"
+      url: "WeatherApp/index.html"
     },
     {
       label: "Football Elite Leagues",
