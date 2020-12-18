@@ -21,7 +21,7 @@ const links = [
     },
     {
       label: "Star Wars Characters",
-      url: "week8teamV2/index.html"
+      url: "week8TeamV2/index.html"
     },
     {
       label: "Todo Application",
