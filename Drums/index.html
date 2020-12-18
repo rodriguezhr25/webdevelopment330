@@ -60,7 +60,7 @@
 <script>
 
     //Listen all the keydown events.
-   
+    let counter = 0;
 
     function playSound(e){    
         const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
@@ -68,9 +68,14 @@
         if(!audio) return; //stop the function running 
         audio.currentTime = 0; //rewind to the start
         audio.play();
-   
+        counter+=10;
         key.classList.add('playing');//adding playing class to transition
-        key.classList.add('moving');
+        key.classList.add('moving');//adding playing class to transition
+      //a  key.style.transform = `translateY(${counter}px)`;
+        setTimeout(() => {audio.classList.remove("playing");}, 1000);
+        if(counter >= 100) counter = 0;
+       
+        //key.classList.add('moving');
     
     }
     function removeTransition(e){

@@ -3,9 +3,17 @@ const links = [
     label: "Notes",
     url: "readings/index.html"
   },
+  {
+    label: "Arrays ",
+    url: "arrayCardio/index-START.html"
+  },
     {
       label: "Tic Tac Toe ",
       url: "tictoc/tictactoe.html"
+    },
+    {
+      label: "Hikes",
+      url: "hikes/index.html"
     },
     {
       label: "Star Wars Characters",
