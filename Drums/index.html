@@ -77,7 +77,7 @@
         if(e.propertyName !== 'transform') return; //Is not a transform
         
         this.classList.remove('playing');
-      
+        this.classList.remove('moving');
     }
     const keys = document.querySelectorAll('.key');
     keys.forEach(key=> key.addEventListener('transitionend', removeTransition));

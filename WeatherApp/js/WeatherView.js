@@ -50,9 +50,9 @@ export default class WeatherView {
             pre.setAttribute("class", "details");
             hum.setAttribute("class", "details");
             min.textContent = `Min:${minTemp} °C `;
-            max.textContent = `Max:${minTemp} °C `;
-            pre.textContent = `Pressure:${minTemp}hPA `;
-            hum.textContent = `Humidity:${minTemp}% `;
+            max.textContent = `Max:${maxTemp} °C `;
+            pre.textContent = `Pressure:${pressure}hPA `;
+            hum.textContent = `Humidity:${humidity}% `;
             details.appendChild(min);
             details.appendChild(max);
             details.appendChild(pre);
@@ -101,39 +101,5 @@ export default class WeatherView {
       }
      
     }
-    renderQuake(quake, element) {
-        const quakeProperties = Object.entries(quake.properties);
-        // for the provided quake make a list of each of the properties associated with it. Then append the list to the provided element. Notice the first line of this method. Object.entries() is a slick way to turn an object into an array so that we can iterate over it easier! 
-        const backButton = document.createElement('button');
-        backButton.innerHTML = 'Hide details';
-        const parentLi = document.querySelector(`[data-id="${quake.id}"]`);
-     
-
-        backButton.setAttribute('class' , 'btn');
-        backButton.setAttribute('data-id' , quake.id);
-
-        let ul = document.createElement('ul');
-
-        quakeProperties.forEach(item => {
-            let li = document.createElement('li');
-            if (item[0] === 'time' || item[0] === 'updated') {
-                li.innerHTML = `<p> ${item[0].toUpperCase()} : ${new Date(item[1])} </p>`;
-
-            } else {
-                li.innerHTML = `<p> ${item[0].toUpperCase()} : ${item[1]} </p>`;
-
-            }
-
-            ul.appendChild(li);
-
-        })
-
-        parentLi.appendChild(ul);
-        parentLi.insertBefore(backButton, parentLi.childNodes[0]);
-       // parentLi.appendChild(backButton);
-        element.innerHTML = parentLi.innerHTML
-    //return backButton;
-
-
-    }
+    
 }

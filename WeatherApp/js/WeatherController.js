@@ -59,30 +59,11 @@ export default class WeatherController {
     this.weatherView.renderWeatherList(this.weather.weather, this.weather.weatherForecast, this.parentElement);
     console.log(this.parentElement);
     console.log(this);
-    // add a listener to the new list of quakes to allow drill down in to the details
-    /* const childrenArray = Array.from(this.parentElement.children);
-    console.log(childrenArray);
-    childrenArray.forEach(child => {
-      child.addEventListener('click', e => {
-
-        this.getQuakeDetails(e.currentTarget.dataset.id);
-      });
-    }); */
 
   }
 
 
-  async getQuakeDetails(quakeId) {
-    // get the details for the quakeId provided from the model, then send them to the view to be displayed
-    const quake = this.quakes.getQuakeById(quakeId);
-    this.quakesView.renderQuake(quake, this.parentElement);
-    const btn = document.querySelector(`.btn[data-id="${quakeId}"]`);
 
-    btn.addEventListener('click', e => {
-
-      this.getQuakesByRadius();
-    });
-  }
 
  
 
