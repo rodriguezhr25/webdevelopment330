@@ -20,10 +20,7 @@ const links = [
       url: "week5/index.html"
     },
 
-    {
-      label: "Todo Application",
-      url: "todo/index.html"
-    },
+  
 
     {
       label: "Week7 notes",
@@ -37,13 +34,30 @@ const links = [
       label: "Week9 notes",
       url: "week9/index.html"
     },
+   
+    {
+      label: "Week10 notes",
+      url: "week10/index.html"
+    },
+    {
+      label: "Pagination Week 8",
+      url: "week8team/index.html"
+    },
+    {
+      label: "Todo Application",
+      url: "todo/index.html"
+    },
     {
       label: "Quakes Near Me",
       url: "QuakesNearMe/index.html"
     },
     {
-      label: "Week10 notes",
-      url: "week10/index.html"
+      label: "Drums",
+      url: "Drums/index.html"
+    },
+    {
+      label: "Weather App",
+      url: "weatherApp/index.html"
     },
   ]
 

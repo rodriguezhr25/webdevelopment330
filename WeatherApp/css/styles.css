@@ -1,0 +1,135 @@
+body {
+  height: 100%;     
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  margin: 2rem;  
+}
+
+
+.btn{
+
+  height: 35px;
+  font-weight: bold;
+  padding: 10px;
+  background-color:#5cb85c;
+  border: 0px;
+  color: #ffffff;
+}
+.btn:hover {
+  background-color: #0275d8;
+}
+ul{  
+  list-style: none;
+}
+
+input{
+
+  border-radius: 5px;
+  height: 30px;
+
+
+}
+
+#divGrid{
+  display: flex;
+
+  margin: 0 auto; 
+  justify-content: center;
+}
+.conditions{
+  margin: 0 auto;
+ 
+}
+.title-div{
+  text-align: center;
+}
+.results{
+  margin: 0 auto;
+  margin-top: 5%;
+  padding: 5px 30px;
+  width: 290px;
+ 
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
+  display: grid;
+  grid-template-areas: " city city city"
+                      " condition condition condition"
+                       " temperature temperature temperature "
+                       "img img  details";
+}
+.title{
+  text-align: center;
+  color: #5cb85c;
+  grid-area: city;
+  font-size: 3rem;
+}
+.condition{
+  text-align: center;
+  color: #0275d8;
+  grid-area: condition;
+}
+.data{
+  text-align: center;
+  color:#666;
+  font-weight: bold;
+  grid-area: temperature;
+  justify-items: center;
+  font-size: 4rem;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  grid-area: img;
+}
+
+.main-details{
+  display: grid;
+  place-items: end;
+  grid-area: details;
+}
+.details{
+  font-weight: bold;
+ 
+}
+
+/*Forecast*/
+
+.column {
+  flex: 1 1 100%;
+  background-color: #F1F2EC;
+  font-size: 13px;
+  text-align: center; 
+ 
+  background-color: #fff;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
+}
+
+
+
+.label {
+  display: block;
+  padding: 5px; 
+  background-color: #0275d8;
+  color: #F1F2EC;
+}
+
+.infoW {
+  display: block;
+  padding: 0 5px 5px;
+}
+
+.forecast img {
+  width: 40%;
+}
+.forecast {
+  display: flex;
+  flex-direction: row;
+  width:50%;
+  margin: 2% auto;
+  justify-content: center;
+
+}
+
