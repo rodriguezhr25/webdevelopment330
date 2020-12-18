@@ -3,6 +3,8 @@ import HikesController from './HikesController.js';
 
 const controller = new HikesController('hikeList');
 
-    controller.showHikeList();
+   
+    window.addEventListener('load', () => {
+        controller.showHikeList();
 
-
+      });

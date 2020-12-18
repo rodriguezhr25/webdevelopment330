@@ -1,6 +1,7 @@
 import HikeModel from './HikeModel.js';
 import HikesView from './HikesView.js';
-
+//  we also need the new comments class to add that functionality
+import Comments from './CommentsController.js';
 // Hike controller
 export default class HikesController {
   constructor(parentId) {
@@ -8,6 +9,8 @@ export default class HikesController {
     // this is how our controller will know about the model and view...we add them right into the class as members.
     this.hikeModel = new HikeModel();
     this.hikesView = new HikesView(parentId);
+        //add an instance of our comments class to the controller
+    this.comments = new Comments('hikes', 'comments');
   }
   
   showHikeList() {
@@ -19,6 +22,9 @@ export default class HikesController {
     // after the hikes have been rendered...add our listener
     this.addHikeListener();
     //  this will get called each time we need to display our full hike list. It should grab the list of hikes from the Model, and then send them to the view.
+      // show comments
+      this.comments.showCommentList();
+  
   }
 
   showOneHike(hikeName) {
@@ -30,6 +36,9 @@ export default class HikesController {
     ).onclick = () => {
       this.showHikeList();
     };
+
+        // show the comments for just this hike
+        this.comments.showCommentList(hikeName);
     
   }
   addHikeListener() {

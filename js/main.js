@@ -16,6 +16,10 @@ const links = [
       url: "hikes/index.html"
     },
     {
+      label: "Hikes MVC",
+      url: "hikesMVC/index.html"
+    },
+    {
       label: "Star Wars Characters",
       url: "week8team/index.html"
     },
