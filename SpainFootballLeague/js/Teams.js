@@ -3,8 +3,9 @@ import { getJSON } from './utilities.js';
 export default class Teams {
   constructor() {
     this.baseUrl = 'http://api.football-data.org/v2/competitions/'
-  
+    this.baseUrlTeam = 'http://api.football-data.org/v2/teams/'
     this._teams = [];
+    this._teamDetails = [];
   }
   async getAllteamsByLeague(league) {
     // use the getJSON function and the position provided to build out the correct URL to get the data we need.  Store it into this._teams, then return it
@@ -21,8 +22,14 @@ export default class Teams {
     console.log(this._teams);
     return this._teams;
   }
-  getQuakeById(id) {
+  async getTeamById(id) {
     // filter this._teams for the record identified by id and return it
-    return this._teams.features.filter(item => item.id === id)[0];
+    const teamId = id;
+    const query = this.baseUrlTeam + teamId;
+    
+
+    this._teamDetails = await getJSON(query);
+    console.log(this._teamDetails);
+    return this._teamDetails;
   }
 }

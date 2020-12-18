@@ -36,27 +36,27 @@ export default class TeamsController {
     console.log(this.parentElement);
     
     // add a listener to the new list of quakes to allow drill down in to the details
- /*    const childrenArray = Array.from(this.parentElement.children);
+    const childrenArray = Array.from(this.parentElement.children);
     console.log(childrenArray);
     childrenArray.forEach(child => {
       child.addEventListener('click', e => {
 
-        this.getQuakeDetails(e.currentTarget.dataset.id);
+        this.getTeamDetails(e.currentTarget.dataset.id);
       });
-    }); */
+    }); 
 
   }
 
 
-  async getQuakeDetails(quakeId) {
-    // get the details for the quakeId provided from the model, then send them to the view to be displayed
-    const quake = this.quakes.getQuakeById(quakeId);
-    this.teamsView.renderQuake(quake, this.parentElement);
-    const btn = document.querySelector(`.btn[data-id="${quakeId}"]`);
+  async getTeamDetails(teamId) {
+    // get the details for the teamId provided from the model, then send them to the view to be displayed
+    const team = await this.teams.getTeamById(teamId);
+    this.teamsView.renderTeam(team, this.parentElement);
+    const btn = document.querySelector(`.btn[data-id="${teamId}"]`);
 
     btn.addEventListener('click', e => {
 
-      this.getQuakesByRadius();
+      this.getTeamsByLeague();
     });
   }
 

@@ -26,7 +26,7 @@ function newSearch(){
 
 const league = document.getElementById('league').value;
 
-const controller = new TeamsController('#teamList', league);
+const controller = new TeamsController('#cards', league);
 
     controller.init();
 
