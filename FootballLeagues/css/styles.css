@@ -40,7 +40,12 @@ input{
 .title-div{
   text-align: center;
 }
-
+.title{
+  text-align: center;
+  color: #5cb85c;
+  
+  font-size: 3rem;
+}
 input:not([type=radio]), select, textarea {
   display: block;
   margin: 20px;
@@ -76,6 +81,7 @@ h2 {
 
 .cards img {
   box-shadow: 5px 20px 50px #282b40;
+  cursor: pointer;
 
 }
 .w-100 {
@@ -95,7 +101,7 @@ h2 {
 
 @media only screen and (min-width: 60em) {
   .cards {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 

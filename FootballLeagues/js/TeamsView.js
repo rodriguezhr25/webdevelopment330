@@ -37,6 +37,7 @@ export default class TeamsView {
                 img.setAttribute('src', teams[i].crestUrl);
                 img.setAttribute('alt', teams[i].name + ' ' + teams[i].shortName + '-' + [i]);
                 img.setAttribute('class' ,'w-100');
+                img.setAttribute('title' ,'Click for details');
                 card.appendChild(img);
                 section.appendChild(h2);
                 section.appendChild(founded);
@@ -83,14 +84,21 @@ export default class TeamsView {
         // for the provided quake make a list of each of the properties associated with it. Then append the list to the provided element. Notice the first line of this method. Object.entries() is a slick way to turn an object into an array so that we can iterate over it easier! 
         const backButton = document.createElement('button');
         backButton.innerHTML = 'Hide details';
-        const parentLi = document.querySelector(`[data-id="${team.id}"]`);
+        const parent = document.querySelector(`[data-id="${team.id}"]`);
 
 
         backButton.setAttribute('class' , 'btn');
         backButton.setAttribute('data-id' , team.id);
-
-        let ul = document.createElement('ul');
-
+        var results = document.getElementsByClassName('title');
+    
+        while(results[0]) {
+          results[0].parentNode.removeChild(results[0]);
+        };
+        
+        let h3 = document.createElement('h3');
+        h3.setAttribute("class", "title");
+        h3.textContent = "Players";
+        document.querySelector('div.container2').appendChild(h3);
         teamDetails.forEach(item => {
           console.log(item);
         
@@ -98,7 +106,7 @@ export default class TeamsView {
               card.setAttribute("class", "card");
              
               let section = document.createElement('section');
-     
+              
               let h2 = document.createElement('h2');
               h2.textContent = item[1].name;
               let nationality = document.createElement('p');
@@ -125,9 +133,9 @@ export default class TeamsView {
 
       
 
-        parentLi.insertBefore(backButton, parentLi.childNodes[0]);
-        console.log(parentLi);
-        element.innerHTML = parentLi.innerHTML
+        parent.insertBefore(backButton, parent.childNodes[0]);
+        console.log(parent);
+        element.innerHTML = parent.innerHTML
     //return backButton;
 
 

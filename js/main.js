@@ -27,6 +27,10 @@ const links = [
       label: "Weather App",
       url: "weatherApp/index.html"
     },
+    {
+      label: "Football Elite Leagues",
+      url: "FootballLeagues/index.html"
+    },
   ]
 
   function generateMenu(){
