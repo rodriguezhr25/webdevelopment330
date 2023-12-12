@@ -2,8 +2,8 @@ import { getJSON } from './utilities.js';
 // Quake Model
 export default class Teams {
   constructor() {
-    this.baseUrl = 'https://api.football-data.org/v2/competitions/'
-    this.baseUrlTeam = 'https://api.football-data.org/v2/teams/'
+    this.baseUrl = 'https://api.football-data.org/v4/competitions/'
+    this.baseUrlTeam = 'https://api.football-data.org/v4/teams/'
     this._teams = [];
     this._teamDetails = [];
   }
